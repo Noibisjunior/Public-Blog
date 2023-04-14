@@ -43,7 +43,38 @@ margin-right: 20px;
     object-fit: cover;
 }
 
+.openProfile{
+    color: #000;
+    box-shadow: 0 2px 4px rgb(0 0 0 /10%);
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 250px;
+    background-color: #fff;
+}
 
+.openProfile .box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.openProfile .icon{
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.openProfile h4{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.openProfile button:hover{
+    background-color: rgba(147,75,255,0.075);
+}
 
 
 

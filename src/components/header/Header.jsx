@@ -4,7 +4,13 @@ import logo from './logo.png'
 import User from './User'
 
 const header = () => {
+
+    window.addEventListener('scroll',function (){
+        const header = this.document.querySelector('.header')
+    })
+
   return (
+
     <>
         <header>
             <div className='container-flex'>

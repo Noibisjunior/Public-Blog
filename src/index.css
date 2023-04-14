@@ -53,6 +53,14 @@ label{
   font-size: 13px;
 }
 
+form,.boxItems{
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+
 
 
 
