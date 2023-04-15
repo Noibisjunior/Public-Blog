@@ -60,17 +60,71 @@ form,.boxItems{
   background-color: #fff;
 }
 
-@media screen and (max-width: 768px){
-  nav {
-    display:none;
-  }
+form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-top: 80px;
+  padding: 40px;
 }
 
+form span{
+  margin-bottom: 20px;
+}
 
+form textarea, .accountInfo .right input,
+form input{
+  border: 1px solid #212121;
+  border-radius: 6px;
+  color: #212121;
+  font-size: 15px;
+  min-height: 44px;
+  padding: 0 20px;
+margin-bottom: 30px;
+width: 100%;
+}
 
+.grid3{
+  display: grid;
+  grid-template-columns: repeat(3,ifr);
+  grid-gap: 15px;
+}
 
+.link{
+  color: #000;
+}
 
+.container{
+  max-width: 95%;
+  margin: auto;
+}
 
+.button{
+  background-color: #000;
+  border: 1px solid #212121;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 400;
+  height: 45px;
+  left: 1px;
+  padding: 15px 25px;
+}
 
+footer{
+  padding: 20px;
+}
 
+footer .icon{
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width:768px) { 
+.grid3{
+  grid-template-columns: repeat(2,1fr);
+}
+  
+}
 

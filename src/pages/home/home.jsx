@@ -1,15 +1,14 @@
 import React from 'react';
-import Category from '../../components/Category/Category'
+import  { Category } from '../../components/Category/Category';
+import { Card } from '../../components/blog/Card';
 
 const Home = () => {
   return (
     <>
-    
-    <Category />
+      <Category />
+      <Card />
+    </>
+  );
+};
 
-
-         </>
-  )
-}
-
-export default Home
+export default Home;
