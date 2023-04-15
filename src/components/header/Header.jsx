@@ -1,33 +1,40 @@
 import React from 'react'
 import './header.css'
-import logo from './logo.png'
+// import logo from './logo.png'
 import User from './User'
+import { nav } from '../../assets/data/data';
+import {Link} from 'react-router-dom'
 
 const header = () => {
 
     window.addEventListener('scroll',function (){
         const header = this.document.querySelector('.header')
+        header.classList.toggle('active',this.window.scrollY > 100)
     })
 
   return (
-
     <>
-        <header>
-            <div className='container-flex'>
-                <div className='logo'>
-                    <img src={logo} alt='logo' width='100px' />
-                </div>
-                <nav>
-                    <ul>{nav}</ul>
-                </nav>
-                <div className='account flexCenter'>
-                    <User />
-                </div>
-            </div>
-        </header>
+      <header className="header">
+        <div className="container-flex">
+          <div className="logo">
+            {/* <img src={logo} alt='logo' width='100px' /> */}
+          </div>
+          <nav>
+            <ul>
+              {nav.map((link) => (
+                <li key={link.id}>
+                  <Link to={link.url}>{link.text}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="account flexCenter">
+            <User />
+          </div>
+        </div>
+      </header>
     </>
-    
-  )
+  );
 }
 
 export default header

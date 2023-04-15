@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Category from '../../components/Category/Category'
 
-const home = () => {
+const Home = () => {
   return (
     <>
-      <Header />
-    </>
+    
+    <Category />
+
+
+         </>
   )
 }
 
-export default home
+export default Home

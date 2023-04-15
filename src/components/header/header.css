@@ -76,7 +76,13 @@ margin-right: 20px;
     background-color: rgba(147,75,255,0.075);
 }
 
-
+header.active{
+    position:sticky;
+    top:0;
+    left:0;
+    width:100%;
+    box-shadow:0 0 4px 0 rgb(115 115 115 / 20%);
+}
 
 
 

@@ -22,16 +22,25 @@ const close = () => {
       <div className="profile">
         {user ? (
           <>
-            <button className="img" onClick={() => setProfileOpen(!profileOpen)}>
-              <img src="" alt="user-image" />
+            <button
+              className="img"
+              onClick={() => setProfileOpen(!profileOpen)}
+            >
+              <img
+                src="https://unsplash.com/photos/iEEBWgY_6lA"
+                alt="user-image"
+              />
             </button>
 
             {profileOpen && (
               <div className="openProfile boxItems" onClick={close}>
-                <Link to="account">
+                <Link to="/account">
                   <div className="image">
                     <div className="img">
-                      <img src="" alt="images" />
+                      <img
+                        src="https://unsplash.com/photos/iEEBWgY_6lA"
+                        alt="images"
+                      />
                     </div>
                     <div className="text">
                       <h4>Cleric Coder</h4>
