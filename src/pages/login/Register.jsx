@@ -1,8 +1,8 @@
 import React from 'react';
 import './login.css';
-import back from '../../assets/images/my-account.jpg';
+import back from '../../assets/images/register.jpg';
 
-export const Regsiter = () => {
+ const Regsiter = () => {
   return (
     <>
       <section className="login">
@@ -31,3 +31,5 @@ export const Regsiter = () => {
     </>
   );
 };
+
+export default Regsiter

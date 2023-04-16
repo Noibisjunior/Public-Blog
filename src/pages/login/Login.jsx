@@ -1,8 +1,8 @@
 import React from 'react';
 import './login.css';
-import back from '../../assets/images/my-account.jpg';
+import back from '../../assets/images/login.jpg';
 
-export const Login = () => {
+ const Login = () => {
   return (
     <>
       <section className="login">
@@ -27,3 +27,5 @@ export const Login = () => {
     </>
   );
 };
+
+export default Login;

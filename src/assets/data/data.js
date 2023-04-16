@@ -36,19 +36,19 @@ export const category = [
     id: 2,
     category: 'Fashion',
     title: 'Becoming a Dragonfly',
-    cover: '../images/category/ca2.png',
+    cover: '../images/login.jpg',
   },
   {
     id: 3,
     category: 'Travel',
     title: "There's always light at the end of the tunnel",
-    cover: '../images/category/ca3.png',
+    cover: '../images/register.jpg',
   },
   {
     id: 4,
     category: 'Sport',
     title: 'Stay Calm And Surf',
-    cover: '../images/category/ca4.png',
+    cover: '../images/account.jpg',
   },
   {
     id: 5,

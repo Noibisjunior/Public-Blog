@@ -1,16 +1,15 @@
-import React from 'react'
-import './header.css'
+import React from 'react';
+import './header.css';
 // import logo from './logo.png'
-import User from './User'
+import User from './User';
 import { nav } from '../../assets/data/data';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const header = () => {
-
-    window.addEventListener('scroll',function (){
-        const header = this.document.querySelector('.header')
-        header.classList.toggle('active',this.window.scrollY > 100)
-    })
+const Header = () => {
+  window.addEventListener('scroll', function () {
+    const header = this.document.querySelector('.header');
+    header.classList.toggle('active', this.window.scrollY > 100);
+  });
 
   return (
     <>
@@ -18,6 +17,7 @@ const header = () => {
         <div className="container-flex">
           <div className="logo">
             {/* <img src={logo} alt='logo' width='100px' /> */}
+            <h1>ClericCoder</h1>
           </div>
           <nav>
             <ul>
@@ -35,6 +35,5 @@ const header = () => {
       </header>
     </>
   );
-}
-
-export default header
+};
+export default Header;

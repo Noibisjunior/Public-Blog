@@ -1,5 +1,5 @@
 import React from 'react';
-import './category.css';
+import './Category.css';
 import { category } from '../../assets/data/data';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

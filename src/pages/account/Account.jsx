@@ -1,8 +1,8 @@
 import React from 'react';
-import image from '../../assets/images/input.png';
+import image from '../../assets/images/account.jpg';
 import './account.css';
 
-export const Account = () => {
+ const Account = () => {
   return (
     <>
       <section className="accountInfo">
@@ -30,3 +30,5 @@ export const Account = () => {
     </>
   );
 };
+
+export default Account;
