@@ -6,10 +6,11 @@ import { BsBagCheck } from 'react-icons/bs'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { GrHelp } from 'react-icons/gr'
 import { BiLogOut } from 'react-icons/bi'
+import account from "../../assets/images/account.jpg"
 
 const User = () => {
 
-  const user = false
+  const user = true
 const [profileOpen,setProfileOpen] = useState(false)
 
 const close = () => {
@@ -27,8 +28,8 @@ const close = () => {
               onClick={() => setProfileOpen(!profileOpen)}
             >
               <img
-                src="https://unsplash.com/photos/iEEBWgY_6lA"
-                alt="user-image"
+                src={account}
+                alt="img"
               />
             </button>
 
@@ -38,8 +39,8 @@ const close = () => {
                   <div className="image">
                     <div className="img">
                       <img
-                        src="https://unsplash.com/photos/iEEBWgY_6lA"
-                        alt="images"
+                        src={account}
+                        alt="img"
                       />
                     </div>
                     <div className="text">
@@ -54,10 +55,12 @@ const close = () => {
                     <h4>Create Post</h4>
                   </button>
                 </Link>
+                <Link to='/login'>
                 <button className="box">
                   <IoSettingsOutline className="icon" />
                   <h4>My Account</h4>
                 </button>
+                </Link>
                 <button className="box">
                   <BsBagCheck className="icon" />
                   <h4>My Order</h4>
@@ -78,9 +81,7 @@ const close = () => {
             )}
           </>
         ) : (
-          <Link to="/login">
             <button>My Account</button>
-          </Link>
         )}
       </div>
     </>

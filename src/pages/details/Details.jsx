@@ -17,7 +17,7 @@ import { blog } from "../../assets/data/data"
     if (blogs) {
       setBlogs(blogs)
     }
-  }, [])
+  }, [id])
 
   return (
     <>

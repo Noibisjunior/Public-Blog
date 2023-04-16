@@ -1,6 +1,6 @@
 import React from 'react';
 import './header.css';
-// import logo from './logo.png'
+// import login from '../../assets/images/login.jpg';
 import User from './User';
 import { nav } from '../../assets/data/data';
 import { Link } from 'react-router-dom';
@@ -14,9 +14,9 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="container-flex">
+        <div className="flex">
           <div className="logo">
-            {/* <img src={logo} alt='logo' width='100px' /> */}
+            {/* <img src={login} alt='logo' width='100px' /> */}
             <h1>ClericCoder</h1>
           </div>
           <nav>
@@ -28,7 +28,7 @@ const Header = () => {
               ))}
             </ul>
           </nav>
-          <div className="account flexCenter">
+          <div className="flexCenter">
             <User />
           </div>
         </div>
