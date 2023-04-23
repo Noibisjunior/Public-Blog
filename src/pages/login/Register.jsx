@@ -16,7 +16,8 @@ const response = await fetch('http://localhost:5000/auth/register', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ email,username, password }),
 });
-// const result = await response.json()
+const result = await response.json()
+console.log(result);
 console.log(response)
 
 if(response.status === 200) {

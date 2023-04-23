@@ -1,4 +1,5 @@
 import React ,{useState}from 'react'
+import {useNavigate}from 'react-router-dom'
 // import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import Editor from './Editor'
@@ -10,22 +11,35 @@ const Create = () => {
     const [summary,setSummary] = useState('')
     const [content,setContent] = useState('')
     const [files,setFiles] = useState('')
-    // const [redirect,setRedirect] = useState(false)
-    
-    
+    const [redirect,setRedirect] = useState(false)
 
-// async function createNewPost(ev){
-// const data = new FormData()
-// data.set('title',title)
-// data.set('summary',summary)
-// data.set('content',content)
-// data.set('file',files[0])
+    const Navigate = useNavigate()
 
-// ev.preventDefault()
-// // console.log(files);
-// }
-  return (
-    // <form onSubmit={createNewPost}>
+async function createNewPost(ev){
+const data = new FormData()
+data.set('title',title)
+data.set('summary',summary)
+data.set('content',content)
+data.set('file',files[0])
+
+ev.preventDefault()
+// console.log(files);
+const response = await fetch('http://localhost:5000/posts',{
+    method:'POST',
+    body:data,
+})
+if(response.ok){
+  setRedirect(true)
+}
+    }
+
+if(redirect){
+  return <Navigate to={'/'}/>
+}
+
+  
+    return (
+    <form onSubmit={createNewPost}>
     
     <>
       <input
@@ -47,7 +61,7 @@ const Create = () => {
       <Editor onChange={setContent} value={content} />
       <button className='btn'  style={{ marginTop: '10px' }}>Create Post</button>
       </>
-    // </form>
+    </form>
   );
 }
 

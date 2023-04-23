@@ -1,14 +1,13 @@
 import './login.css';
 import back from '../../assets/images/login.jpg';
 import  {  useState } from 'react';
-// import userContext from './userContext';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [userName, setUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
-  // const { setUserInfo } = useContext(userContext);
+  
 
   const Navigate = useNavigate();
 
@@ -17,23 +16,17 @@ const LoginPage = () => {
     const response = await fetch('http://localhost:5000/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userName, password }),
+      body: JSON.stringify({ username, password }),
     });
 console.log(response)
 const data = await response.json()
+console.log(data);
     if(response.status === 200) {
-  alert('login successful')
+  setRedirect(true);
 }else{
   alert('login failed')
 }
-    // if (response.status === 200) {
-    //   response.json().then((result) => {
-    //     console.log(result);
-    //     setRedirect(true);
-    //   });
-    // } else {
-    //   alert('wrong credentials');
-    // }
+    
   }
 
   if (redirect) {
@@ -52,7 +45,7 @@ const data = await response.json()
       <input
         type="text"
         placeholder="username"
-        value={userName}
+        value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
