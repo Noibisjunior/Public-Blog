@@ -28,6 +28,8 @@ const response = await fetch('http://localhost:5000/posts',{
     method:'POST',
     body:data,
 })
+console.log(response);
+
 if(response.ok){
   setRedirect(true)
 }
