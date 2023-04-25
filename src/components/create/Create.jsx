@@ -1,86 +1,78 @@
-import React ,{useState}from 'react'
-import {useNavigate}from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import Editor from './Editor'
- import './create.css';
-
+import 'react-quill/dist/quill.snow.css';
+import Editor from './Editor';
+import './create.css';
 
 const Create = () => {
-    const [title,setTitle] = useState('')
-    const [summary,setSummary] = useState('')
-    const [content,setContent] = useState('')
-    const [files,setFiles] = useState('')
-    const [redirect,setRedirect] = useState(false)
+  const [redirect, setRedirect] = useState(false);
+  const [content, setContent] = useState('');
+  const [files, setFiles] = useState('');
+  const [formData, setFormData] = useState({
+    title: '',
+    summary: '',
+  });
+  const { title, summary } = formData;
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const Navigate = useNavigate()
+  const Navigate = useNavigate();
 
-async function createNewPost(ev){
-const data = new FormData()
-data.set('title',title)
-data.set('summary',summary)
-data.set('content',content)
-data.set('file',files[0])
+  async function createNewPost(ev) {
+    ev.preventDefault();
+    const response = await fetch('http://localhost:5000/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, summary, content }),
+    });
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
 
-ev.preventDefault()
-// console.log(files);
-const response = await fetch('http://localhost:5000/posts',{
-    method:'POST',
-    body:data,
-})
-console.log(response);
-
-if(response.ok){
-  setRedirect(true)
-}
+    if (response.ok) {
+      setRedirect(true);
     }
+  }
 
-if(redirect){
-  return <Navigate to={'/'}/>
-}
+  if (redirect) {
+    return <Navigate to={'/'} />;
+  }
 
-  
-    return (
+  return (
     <form onSubmit={createNewPost}>
-    
-    <>
-      <input
-      className='title'
-        type="title"
-        placeholder={'Title'}
-        value={title}
-        onChange={(ev) => setTitle(ev.target.value)}
-      />
-      
-      <input
-      className='summary'
-        type="summary"
-        placeholder={'summary'}
-        value={summary}
-        onChange={(ev) => setSummary(ev.target.value)}
-      />
-      <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
-      <Editor onChange={setContent} value={content} />
-      <button className='btn'  style={{ marginTop: '10px' }}>Create Post</button>
+      <>
+        <input
+          className="title"
+          type="text"
+          name="title"
+          placeholder={'Title'}
+          value={title}
+          onChange={onChange}
+          required
+        />
+
+        <input
+          className="summary"
+          name="summary"
+          placeholder={'summary'}
+          value={summary}
+          onChange={onChange}
+          required
+        />
+        <input type="file" onChange={(e)=>setFiles(e.target.files)}  />
+        <Editor onChange={setContent} value={content} required />
+        <button className="btn">
+          Create Post
+        </button>
       </>
     </form>
   );
-}
+};
 
-export default Create
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Create;
 
 // import React from 'react';
 // import './create.css';
@@ -115,3 +107,8 @@ export default Create
 // };
 
 // export default Create;
+// const data = new FormData()
+// data.set('title',title)
+// data.set('summary',summary)
+// // data.set('content',content)
+// data.set('file',files[0])
