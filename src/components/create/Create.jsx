@@ -12,10 +12,16 @@ const Create = () => {
   const [formData, setFormData] = useState({
     title: '',
     summary: '',
+    categories:'',
   });
-  const { title, summary } = formData;
+  const { title, summary,categories } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+const handleFileChange = (e) => {
+  setFiles(e.target.files[0]);
+};
+
 
   const Navigate = useNavigate();
 
@@ -26,7 +32,7 @@ const Create = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, summary, content }),
+      body: JSON.stringify({ title, summary, content,categories }),
     });
     console.log(response);
     const data = await response.json();
@@ -53,6 +59,15 @@ const Create = () => {
           onChange={onChange}
           required
         />
+        <input
+          className="category"
+          type="text"
+          name="categories"
+          placeholder={'Category'}
+          value={categories}
+          onChange={onChange}
+          required
+        />
 
         <input
           className="summary"
@@ -62,11 +77,9 @@ const Create = () => {
           onChange={onChange}
           required
         />
-        <input type="file" onChange={(e)=>setFiles(e.target.files)}  />
+        <input type="file" onChange={handleFileChange} />
         <Editor onChange={setContent} value={content} required />
-        <button className="btn">
-          Create Post
-        </button>
+        <button className="btn">Create Post</button>
       </>
     </form>
   );

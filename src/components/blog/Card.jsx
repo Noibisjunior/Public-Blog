@@ -1,6 +1,5 @@
 import React from 'react';
 import './blog.css';
-import { blog } from '../../assets/data/data';
 import {
   AiOutlineTags,
   AiOutlineClockCircle,
@@ -8,37 +7,48 @@ import {
   AiOutlineShareAlt,
 } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { formatISO9075 } from 'date-fns';
 
-export const Card = () => {
+export const Card = ({
+  _id,
+  title,
+  summary,
+  cover,
+  createdAt,
+  author,
+  categories,
+}) => {
   return (
     <>
       <section className="blog">
         <div className="container grid3">
-          {blog.map((item) => (
-            <div className="box boxItems" key={item.id}>
-              <div className="img">
-                <img src={item.cover} alt="" />
+          <div className="box boxItems">
+            <div className="img">
+              <Link to={`/posts/${_id}`}>
+                <img src={'http://localhost:5000'} alt="code" />
+              </Link>
+            </div>
+            <div className="details">
+              <Link to={`/posts/${_id}`} className="link">
+                <h3>{title}</h3>
+              </Link>
+              <div className="tag">
+                <AiOutlineTags className="icon" />
+                <a href="/">#{categories}</a>
               </div>
-              <div className="details">
-                <div className="tag">
-                  <AiOutlineTags className="icon" />
-                  <a href="/">#{item.category}</a>
-                </div>
-                <Link to={`/details/${item.id}`} className="link">
-                  <h3>{item.title}</h3>
-                </Link>
-                <p>{item.desc.slice(0, 180)}...</p> 
-                <div className="date">
-                  <AiOutlineClockCircle className="icon" />{' '}
-                  <label htmlFor="">{item.date}</label>
-                  <AiOutlineComment className="icon" />{' '}
-                  <label htmlFor="">27</label>
-                  <AiOutlineShareAlt className="icon" />{' '}
-                  <label htmlFor="">SHARE</label>
-                </div>
+
+              <p>{author}</p>
+              <p>{summary}</p>
+              <div className="date">
+                <AiOutlineClockCircle className="icon" />{' '}
+                <time>{formatISO9075(new Date(createdAt))}</time>
+                <AiOutlineComment className="icon" />{' '}
+                <label htmlFor="">27</label>
+                <AiOutlineShareAlt className="icon" />{' '}
+                <label htmlFor="">SHARE</label>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
     </>
