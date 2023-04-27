@@ -25,7 +25,7 @@ export const Card = ({
           <div className="box boxItems">
             <div className="img">
               <Link to={`/posts/${_id}`}>
-                <img src={'http://localhost:5000'} alt="code" />
+                <img src={'http://localhost:5000/' + cover} alt="code" />
               </Link>
             </div>
             <div className="details">

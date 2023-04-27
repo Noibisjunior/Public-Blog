@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import 'react-quill/dist/quill.snow.css';
 import Editor from './Editor';
 import './create.css';
+import axios from "axios";
 
 const Create = () => {
   const [redirect, setRedirect] = useState(false);
@@ -13,8 +14,9 @@ const Create = () => {
     title: '',
     summary: '',
     categories:'',
+    cover:''
   });
-  const { title, summary,categories } = formData;
+  const { title, summary,categories,cover } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -27,16 +29,20 @@ const handleFileChange = (e) => {
 
   async function createNewPost(ev) {
     ev.preventDefault();
-    const response = await fetch('http://localhost:5000/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, summary, content,categories }),
-    });
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
+   const form = new FormData()
+form.append('title',title)
+form.append('summary',summary)
+form.append('categories',categories)
+form.append('cover',cover)
+
+axios
+  .post('http://localhost:5000/posts', form)
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
     if (response.ok) {
       setRedirect(true);
@@ -48,7 +54,7 @@ const handleFileChange = (e) => {
   }
 
   return (
-    <form onSubmit={createNewPost}>
+    <form onSubmit={createNewPost} encType='multipart/form-data'>
       <>
         <input
           className="title"
@@ -77,7 +83,7 @@ const handleFileChange = (e) => {
           onChange={onChange}
           required
         />
-        <input type="file" onChange={handleFileChange} />
+        <input type="file" onChange={handleFileChange} accept='.png, .jpg, .jpeg'/>
         <Editor onChange={setContent} value={content} required />
         <button className="btn">Create Post</button>
       </>
@@ -86,6 +92,29 @@ const handleFileChange = (e) => {
 };
 
 export default Create;
+
+
+
+
+
+// const response = await fetch('http://localhost:5000/posts', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({ title, summary, content, categories }),
+// });
+// console.log(response);
+// const data = await response.json();
+// console.log(data);
+
+
+
+
+
+
+
+
 
 // import React from 'react';
 // import './create.css';
